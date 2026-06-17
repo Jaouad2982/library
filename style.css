@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  margin-top: 24px;
+}
+
+.card {
+  border-left: 6px solid rgb(238, 238, 29);
+  margin-bottom: 14px;
+  padding: 24px;
+  background-color: rgb(248, 243, 243);
+  border-radius: 5px;
+  width: 16rem;
+}
