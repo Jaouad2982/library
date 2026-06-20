@@ -1,79 +1,64 @@
-const Book = function (id, title, author, language, year, numOfPages) {
-  if (!title || !author || !language || !year || !numOfPages) {
-    return "......";
-  }
-  this.id = id;
-  this.title = title;
-  this.author = author;
-  this.language = language;
-  this.year = year;
-  this.numOfPages = numOfPages;
-};
-let arrayOfBooks = [];
-const id = Math.round(Math.random() * 12345);
-console.log(id);
-const book = new Book(
-  id,
-  "Introduction to Algorithms",
-  "Thomas H Cormen",
-  "English",
-  2009,
-  1312,
-);
+const container = document.querySelector(".container");
+const form = document.querySelector(".contact-form");
+const formInput = document.querySelectorAll(".contact-form input");
+console.log(formInput);
 
-const bookOne = new Book(
-  id,
-  "Eloquent JavaScript",
-  "Marijn Haverbeke",
-  "English",
-  2018,
-  472,
-);
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const yearInput = document.getElementById("year");
+const languageInput = document.getElementById("language");
+const numOfpagesInput = document.getElementById("numOfpages");
 
-const bookTwo = new Book(
-  id,
-  "The Pragmatic Programmer",
-  "Andrew Hunt",
-  "English",
-  1999,
-  352,
-);
+//create the form elements
+// const author;
+let setOfDivs = new Set();
+let arrOfBooks = [];
+form.addEventListener("submit", function (event) {
+  event.preventDefault(); // Prevent page reload
 
-const bookThree = new Book(
-  id,
-  "Introduction to java programming",
-  "Y. Daniel Liang",
-  "English",
-  2012,
-  1249,
-);
-const addBookToLibrary = function (book) {
-  arrayOfBooks.push(book);
-  return arrayOfBooks;
-};
+  // Get the input value
+  const titleText = titleInput.value.trim();
+  const authorText = authorInput.value.trim();
+  const yearText = yearInput.value.trim();
+  const languageText = languageInput.value.trim();
+  const numberofpagesText = numOfpagesInput.value.trim();
+  arrOfBooks.push({
+    titleText,
+    authorText,
+    yearText,
+    languageText,
+    numberofpagesText,
+  });
 
-addBookToLibrary(book);
-addBookToLibrary(bookOne);
-addBookToLibrary(bookTwo);
-addBookToLibrary(bookThree);
+  let bookArray = [...arrOfBooks];
 
-arrayOfBooks.forEach((element) => console.log(element));
+  container.innerHTML = bookArray.map(
+    (elem) => `<div class="divCreated">
+      <h4>${elem.titleText} </h4>
+      <p>${elem.authorText} </p>
+      <p>${elem.yearText} </p>
+      <p>${elem.languageText} </p>
+      <p>${elem.numberofpagesText}</p>
+    </div> `,
+  );
 
-// add the book the DOM
-function returnElement(element) {
-  return document.querySelector(element);
-}
+  console.log(bookArray);
 
-const title = returnElement(".title");
-const author = returnElement(".author");
-const language = returnElement(".language");
-const year = returnElement(".year");
-const numOfPages = returnElement(".numOfPages");
-arrayOfBooks.forEach(
-  (elem) => (
-    (title.textContent = elem.title),
-    (author.textContent = elem.author),
-    (language.textContent = elem.language),
-    (year.textContent = elem.year)((numOfPages.textContent = elem.numOfPages))
-  ),
-);
+  // arrayDiv.forEach((elem) => {});
+  // console.log(setOfDivs);
+  // const iterator = setOfDivs.values(); // or books[Symbol.iterator]()
+  // console.log(iterator);
+  // // Iterate manually
+  // let result = iterator.next();
+  // let divBlock = document.createElement("div");
+  // container.append(divBlock);
+  // let p = document.createElement("p");
+
+  // while (!result.done) {
+  //   const book = result.value;
+  //   if (!book.has)
+  //     // This is the object
+  //     divBlock.append(p, book.titleText);
+  //   result = iterator.next();
+  // }
+});

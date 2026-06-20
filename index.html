@@ -7,14 +7,60 @@
   </head>
   <body>
     <main class="container">
-      <div class="card">
-        <h4 class="title">Title of the book</h4>
-        <p class="author">author</p>
-        <p class="language">language</p>
-        <p class="year">year</p>
-        <p class="numOfPages">number of pages</p>
-      </div>
+      
     </main>
+    <form class="contact-form">
+        <span class="close-form">X</span>
+        <h2>Add a book</h2>
+
+        <label for="title">Title</label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          placeholder="title..."
+          required
+        />
+
+        <label for="author">Author</label>
+        <input
+          type="text"
+          id="author"
+          name="author"
+          placeholder="The author..."
+          required
+        />
+
+        <label for="language">Language</label>
+        <input
+        type="text"
+          id="language"
+          name="language"
+          placeholder="book Language..."
+          required
+        ></input>
+        
+        <label for="year">Year</label>
+        <input
+        type="text"
+          id="year"
+          name="year"
+          placeholder="book year..."
+          required
+        ></input>
+
+        <label for="numOfpages">number of pages </label>
+        <input
+        type="text"
+          id="numOfpages"
+          name="numOfpages"
+          placeholder="Number of pages..."
+          required
+        ></input>
+
+
+        <button type="submit">Send Message</button>
+      </form>
     <script src="index.js"></script>
   </body>
 </html>
