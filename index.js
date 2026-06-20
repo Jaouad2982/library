@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const form = document.querySelector(".contact-form");
 const formInput = document.querySelectorAll(".contact-form input");
+
 console.log(formInput);
 
 const titleInput = document.getElementById("title");
@@ -13,6 +14,12 @@ const numOfpagesInput = document.getElementById("numOfpages");
 // const author;
 let setOfDivs = new Set();
 let arrOfBooks = [];
+let bookArray = [];
+function removeBook(btn) {
+  btn.addEventListener("click", function () {
+    console.log(bookArray);
+  });
+}
 form.addEventListener("submit", function (event) {
   event.preventDefault(); // Prevent page reload
 
@@ -30,20 +37,53 @@ form.addEventListener("submit", function (event) {
     numberofpagesText,
   });
 
-  let bookArray = [...arrOfBooks];
+  bookArray = [...arrOfBooks];
+  container.innerHTML = "";
+  bookArray.forEach((elem) => {
+    const divBlock = document.createElement("div");
+    const h4 = document.createElement("h4");
+    const p1 = document.createElement("p");
+    const p2 = document.createElement("p");
+    const p3 = document.createElement("p");
+    const p4 = document.createElement("p");
+    const button = document.createElement("button");
 
-  container.innerHTML = bookArray.map(
-    (elem) => `<div class="divCreated">
-      <h4>${elem.titleText} </h4>
-      <p>${elem.authorText} </p>
-      <p>${elem.yearText} </p>
-      <p>${elem.languageText} </p>
-      <p>${elem.numberofpagesText}</p>
-    </div> `,
-  );
+    container.append(divBlock);
+    divBlock.append(h4);
+    divBlock.append(p1);
+    divBlock.append(p2);
+    divBlock.append(p3);
+    divBlock.append(p4);
+    divBlock.append(button);
+    button.textContent = "Remove Book";
+    h4.textContent = elem.titleText;
+    p1.textContent = elem.authorText;
+    p2.textContent = elem.yearText;
+    p3.textContent = elem.languageText;
+    p4.textContent = elem.numberofpagesText;
+    button.dataset.title = elem.titleText;
+    button.addEventListener("click", function () {
+      bookArray = bookArray.filter(
+        (element) => element.titleText !== this.dataset.titleText,
+      );
+      divBlock.remove();
+    });
+  });
 
-  console.log(bookArray);
-
+  // container.innerHTML = bookArray.map(
+  //   (elem) => `<div class="divCreated">
+  //     <h4>${elem.titleText} </h4>
+  //     <p>${elem.authorText} </p>
+  //     <p>${elem.yearText} </p>
+  //     <p>${elem.languageText} </p>
+  //     <p>${elem.numberofpagesText}</p>
+  //   </div> `,
+  // );
+  // const createdDiv = document.querySelector(".divCreated");
+  // button.textContent = "remove book";
+  // createdDiv.append(button);
+  // const btn = document.querySelector("#buttonCreated");
+  // removeBook(btn);
   // arrayDiv.forEach((elem) => {});
   // console.log(setOfDivs);
   // const iterator = setOfDivs.values(); // or books[Symbol.iterator]()
