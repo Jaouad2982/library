@@ -13,6 +13,7 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  flex-wrap: wrap;
 }
 
 .createdDiv {
@@ -67,4 +68,16 @@
 
 .contact-form button:hover {
   background: #06478d;
+}
+
+.btn {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-content: baseline;
+}
+
+.btnClass {
+  border-radius: 5px 5px;
+  border-color: #fff;
 }

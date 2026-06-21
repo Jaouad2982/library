@@ -44,14 +44,21 @@ form.addEventListener("submit", function (event) {
   container.innerHTML = "";
   bookArray.forEach((elem) => {
     const divBlock = document.createElement("div");
+    const divBtn = document.createElement("div");
+    divBlock.classList.add("createdDiv");
     const id = document.createElement("span");
     const h4 = document.createElement("h4");
     const p1 = document.createElement("p");
     const p2 = document.createElement("p");
     const p3 = document.createElement("p");
     const p4 = document.createElement("p");
-    const button = document.createElement("button");
+    const p5 = document.createElement("p");
 
+    const button = document.createElement("button");
+    const buttonRead = document.createElement("button");
+    button.classList.add("buttonAdd");
+    buttonRead.classList.add("buttonRead");
+    const read = document.createElement("p");
     container.append(divBlock);
     divBlock.append(id);
     divBlock.append(h4);
@@ -59,18 +66,35 @@ form.addEventListener("submit", function (event) {
     divBlock.append(p2);
     divBlock.append(p3);
     divBlock.append(p4);
-    divBlock.append(button);
+    divBlock.append(p5);
+    divBtn.append(button);
+    divBtn.append(buttonRead);
+    divBlock.append(read);
+    divBlock.append(divBtn);
+    divBtn.classList.add("btn");
+    button.classList.add("btnClass");
+    buttonRead.classList.add("btnClass");
     button.textContent = "Remove Book";
+    buttonRead.textContent = "toggle Read";
     id.textContent = idNumber;
     h4.textContent = elem.titleText;
     p1.textContent = elem.authorText;
     p2.textContent = elem.yearText;
     p3.textContent = elem.languageText;
     p4.textContent = elem.numberofpagesText;
+    p5.textContent = "read:true";
     button.dataset.id = idNumber;
     button.addEventListener("click", function () {
       bookArray = bookArray.filter((id) => id !== this.dataset.id);
       divBlock.remove();
+    });
+    buttonRead.addEventListener("click", function () {
+      console.log("button read clicked");
+      if (p5.textContent === "read:true") {
+        p5.textContent = "read:false";
+      } else if (p5.textContent === "read:false") {
+        p5.textContent = "read:true";
+      }
     });
   });
 
