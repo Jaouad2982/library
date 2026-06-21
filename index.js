@@ -147,7 +147,9 @@ btnSearch.addEventListener("click", function () {
   const valueOfInput = getBook.value;
   let book = bookArray.find((elem) => {
     return (
-      elem.titleText.toLowerCase().trim() == valueOfInput.toLowerCase().trim()
+      elem.titleText.toLowerCase().trim() ==
+        valueOfInput.toLowerCase().trim() ||
+      elem.authorText.toLowerCase().trim() == valueOfInput.toLowerCase().trim()
     );
   });
   if (book) {

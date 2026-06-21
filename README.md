@@ -7,7 +7,7 @@ This repository contains a **Library Management System** that helps manage book 
 - **Add Books:** Add new books with details like title, author, ISBN, and availability status.  
 - **Manage Users:** Add and manage library members. "to do  " 
 - **Borrow & Return:** Track which member borrowed which book and when it is due. "To do "  
-- **Search Functionality:** Find books by title, author, or ISBN.  "To do "
+- **Search Functionality:** Find books by title, author, or ISBN.  
 - **Reporting:** Generate reports of borrowed books and overdue books."To do"
 
 ## Installation
