@@ -81,3 +81,9 @@
   border-radius: 5px 5px;
   border-color: #fff;
 }
+
+.searchInput {
+  top: 0;
+  position: absolute;
+  left: 2rem;
+}

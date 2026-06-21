@@ -74,6 +74,7 @@ form.addEventListener("submit", function (event) {
     divBtn.classList.add("btn");
     button.classList.add("btnClass");
     buttonRead.classList.add("btnClass");
+
     button.textContent = "Remove Book";
     buttonRead.textContent = "toggle Read";
     id.textContent = idNumber;
@@ -129,4 +130,32 @@ form.addEventListener("submit", function (event) {
   //     divBlock.append(p, book.titleText);
   //   result = iterator.next();
   // }
+});
+
+// search for a book
+const getBook = document.getElementById("bookSearch");
+const btnSearch = document.getElementById("btnSearch");
+let inputValue = "";
+// getBook.addEventListener("keyup", function (e) {
+//   inputValue = e.target.value;
+//   let book = bookArray.find((elem) => elem.titleText == inputValue);
+//   console.log(book);
+// });
+
+console.log(inputValue);
+btnSearch.addEventListener("click", function () {
+  const valueOfInput = getBook.value;
+  let book = bookArray.find((elem) => {
+    return (
+      elem.titleText.toLowerCase().trim() == valueOfInput.toLowerCase().trim()
+    );
+  });
+  if (book) {
+    container.remove;
+    container.innerHTML - "";
+    container.innerHTML = `<div class="divSearch"> <h4>${book.titleText} </h4> <p>${book.authorText}</p> <p>${book.yearText} </p> <p>${book.languageText} </p>
+  <p>${book.numberofpagesText}</p> </div>`;
+  } else {
+    container.innerHTML = `<h4> Book not found <h4>`;
+  }
 });
