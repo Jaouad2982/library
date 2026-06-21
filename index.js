@@ -20,7 +20,10 @@ function removeBook(btn) {
     console.log(bookArray);
   });
 }
+
 form.addEventListener("submit", function (event) {
+  let idNumber = Math.round(Math.random() * 123456789);
+
   event.preventDefault(); // Prevent page reload
 
   // Get the input value
@@ -41,6 +44,7 @@ form.addEventListener("submit", function (event) {
   container.innerHTML = "";
   bookArray.forEach((elem) => {
     const divBlock = document.createElement("div");
+    const id = document.createElement("span");
     const h4 = document.createElement("h4");
     const p1 = document.createElement("p");
     const p2 = document.createElement("p");
@@ -49,6 +53,7 @@ form.addEventListener("submit", function (event) {
     const button = document.createElement("button");
 
     container.append(divBlock);
+    divBlock.append(id);
     divBlock.append(h4);
     divBlock.append(p1);
     divBlock.append(p2);
@@ -56,16 +61,15 @@ form.addEventListener("submit", function (event) {
     divBlock.append(p4);
     divBlock.append(button);
     button.textContent = "Remove Book";
+    id.textContent = idNumber;
     h4.textContent = elem.titleText;
     p1.textContent = elem.authorText;
     p2.textContent = elem.yearText;
     p3.textContent = elem.languageText;
     p4.textContent = elem.numberofpagesText;
-    button.dataset.title = elem.titleText;
+    button.dataset.id = idNumber;
     button.addEventListener("click", function () {
-      bookArray = bookArray.filter(
-        (element) => element.titleText !== this.dataset.titleText,
-      );
+      bookArray = bookArray.filter((id) => id !== this.dataset.id);
       divBlock.remove();
     });
   });
